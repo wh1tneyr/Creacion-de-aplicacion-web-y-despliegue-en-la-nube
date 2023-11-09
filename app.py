@@ -18,3 +18,17 @@ if hist_button:  # al hacer clic en el botón
 
     # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
+
+# crear una casilla de verificación
+build_histogram = st.checkbox('Construir un histograma')
+
+if build_histogram: # si la casilla de verificación está seleccionada
+    #escribir un mensaje
+    st.write(
+        'Creación de un histograma para la verificación')
+    
+    #crear un histograma
+    fig_2 = px.histogram(build_histogram, x='odometer')
+    
+    #mostrar un gráfico Plotly interactivo
+    st.plotly_chart(fig_2, use_container_width=True)   
