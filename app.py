@@ -5,7 +5,7 @@ import streamlit as st
 car_data = pd.read_csv('vehicles_us.csv')  # leer los datos
 hist_button = st.button('Construir histograma')  # crear un botón
 
-st.header('Autos a la venta')
+st.header('Anuncios de autos a la venta')
 st.write('Aplicación en construcción')
 
 if hist_button:  # al hacer clic en el botón
@@ -21,14 +21,16 @@ if hist_button:  # al hacer clic en el botón
 
 # crear una casilla de verificación
 build_histogram = st.checkbox('Construir un histograma')
+car_model= car_data['model'].reset_index()
 
 if build_histogram: # si la casilla de verificación está seleccionada
     #escribir un mensaje
     st.write(
-        'Creación de un histograma para la verificación')
+        'Creación de un histograma para la verificación según el modelo de auto')
     
     #crear un histograma
-    fig_2 = px.histogram(build_histogram, x='odometer')
+    fig_2 = px.histogram(car_model, x='model')
     
     #mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig_2, use_container_width=True)   
+
